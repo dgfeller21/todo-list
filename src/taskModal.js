@@ -111,10 +111,12 @@ export default function createDialog() {
 }
 function addTaskToList(task) {
     tasks.push(task)
+    localStorage.setItem('myTasks', JSON.stringify(tasks))
 }
-function displayTasks() {
+ export function displayTasks() {
     console.log('start of displayTasks()')
     let num = 0
+    console.log(tasks)
     while(taskContainer.firstChild) {
         taskContainer.firstChild.remove()
     }
@@ -169,6 +171,7 @@ function displayTasks() {
             console.log(tasks)
             tasks.splice(id, 1)
             console.log(tasks)
+            localStorage.setItem('myTasks', JSON.stringify(tasks))
             displayTasks()
         })
         num++
